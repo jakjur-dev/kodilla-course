@@ -1,6 +1,4 @@
-package com.kodilla.testing.forum;
-
-import java.util.Objects;
+package com.kodilla.testing.forum.tdd;
 
 public class ForumPost {
 
