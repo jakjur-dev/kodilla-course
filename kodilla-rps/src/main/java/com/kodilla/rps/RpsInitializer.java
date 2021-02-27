@@ -12,7 +12,7 @@ public class RpsInitializer {
         String playerName = scanner.nextLine();
 
         while (playerName.equals("")){
-            System.out.println("Nazwa gracza nie może być pusta!");
+            System.out.println("Podaj nazwę gracza (wartość nie może pozostać pusta!)");
             playerName = scanner.nextLine();
         }
 
