@@ -4,13 +4,12 @@ public class PlayerMoveGenerator {
 
     public String generate(String playerNumber) {
 
-        String playerMove = "";
         if (playerNumber.equals("1")) {
-            return playerMove = "kamień";
+            return "kamień";
         } else if (playerNumber.equals("2")) {
-            return playerMove = "papier";
+            return "papier";
         } else {
-            return playerMove = "nożyce";
+            return "nożyce";
         }
     }
 }
