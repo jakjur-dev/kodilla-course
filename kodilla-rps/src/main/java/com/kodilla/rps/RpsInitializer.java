@@ -11,10 +11,15 @@ public class RpsInitializer {
         System.out.println("Podaj nazwę gracza");
         String playerName = scanner.nextLine();
 
+        while (playerName.equals("")){
+            System.out.println("Nazwa gracza nie może być pusta!");
+            playerName = scanner.nextLine();
+        }
+
         System.out.println("Podaj maksymalną liczbę punktów");
         String maxWins = scanner.nextLine();
 
-        while (Pattern.matches("[a-zA-Z]+", maxWins)) {
+        while (Pattern.matches("[a-zA-Z]+", maxWins) || maxWins.equals("")) {
             System.out.println("Podaj liczbę całkowitą!");
             maxWins = scanner.nextLine();
         }
