@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.food2door;
 
 public class Product {
 
@@ -18,7 +18,7 @@ public class Product {
         return productQuantity;
     }
 
-    public void sendProduct() {
-        productQuantity--;
+    public void sendProduct(int sentQuantity) {
+        productQuantity -= sentQuantity;
     }
 }
