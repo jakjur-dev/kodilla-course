@@ -1,0 +1,94 @@
+CREATE TABLE USERS
+(
+    ID  SERIAL PRIMARY KEY,
+    FIRSTNAME   VARCHAR(100),
+    LASTNAME    VARCHAR(100)
+    );
+INSERT INTO USERS (FIRSTNAME, LASTNAME)
+VALUES ('John', 'Smith');
+
+INSERT INTO USERS (FIRSTNAME, LASTNAME)
+VALUES ('Zachary', 'Lee');
+
+INSERT INTO USERS (FIRSTNAME, LASTNAME)
+VALUES ('Stephanie', 'Kovalsky');
+
+INSERT INTO USERS (FIRSTNAME, LASTNAME)
+VALUES ('Thomas', 'Landgren');
+
+INSERT INTO USERS (FIRSTNAME, LASTNAME)
+VALUES ('John', 'Thomson');
+
+CREATE TABLE ISSUESLISTS
+(
+        ID SERIAL PRIMARY KEY,
+        NAME VARCHAR(100)
+);
+
+CREATE TABLE ISSUES
+(
+    ID SERIAL PRIMARY KEY,
+    ISSUESLIST_ID BIGINT UNSIGNED NOT NULL,
+    SUMMARY VARCHAR(100),
+    DESCRIPTION VARCHAR(1024),
+    USER_ID_ASSIGNEDTO BIGINT UNSIGNED NOT NULL,
+
+    FOREIGN KEY (ISSUESLIST_ID) REFERENCES ISSUESLISTS(ID),
+    FOREIGN KEY (USER_ID_ASSIGNEDTO) REFERENCES USERS(ID)
+);
+
+INSERT INTO ISSUESLISTS (NAME)
+VALUES('ToDo');
+
+INSERT INTO ISSUESLISTS (NAME)
+VALUES('In progress');
+
+INSERT INTO ISSUESLISTS (NAME)
+VALUES('Done');
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (1, 'Atomic energy', 'nuclear weapons, nuclear waste', 1);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (1, 'Agriculture', 'sustainable agriculture, food security', 2);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (1, 'Ageing', 'ageing population, demographic transition', 3);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (1, 'Environment', 'pollution, deforestation, desertification, etc., see Global environment issues below', 4);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (1, 'Food', 'missing food security and safety, food riots, world hunger', 4);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (2, 'AIDS', 'Prevention of HIV/AIDS, HIV and pregnancy, HIV/AIDS denialism', 1);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (2, 'Africa', 'poverty, diseases, desertification, malnutrition, regional conflict', 2);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (2, 'Children', 'Child poverty, Child labour, Child abuse, Child mortality, Global education', 3);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (2, 'Democracy', 'democratization', 4);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (2, 'Disarmament', 'weapons of mass destruction, chemical and biological weapons, conventional weapons, landmines and small arms', 4);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (3, 'Demining', 'land mines', 1);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (3, 'Human rights', 'human rights violations', 2);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (3, 'International law', 'war crimes, discrimination, state-corporate crime', 3);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (3, 'People with disabilities', 'discrimination, lack of universal design', 4);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (3, 'Water ', 'water scarcity, water conflict, water privatization, water pollution', 4);
+
+COMMIT;
