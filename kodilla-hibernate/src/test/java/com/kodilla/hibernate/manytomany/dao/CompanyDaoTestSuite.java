@@ -96,16 +96,19 @@ class CompanyDaoTestSuite {
 
         //Then
         try {
+
             assertEquals(1, employeesNamedSmith.size());
             assertEquals(1, companiestStartingWithSof.size());
+
         } finally {
+
             //CleanUp
-            //int softwareMachineId = softwareMachine.getId();
-            //int dataMaestersId = dataMaesters.getId();
-            //int greyMatterId = greyMatter.getId();
-            //companyDao.deleteById(softwareMachineId);
-            //companyDao.deleteById(dataMaestersId);
-            //companyDao.deleteById(greyMatterId);
+            int softwareMachineId = softwareMachine.getId();
+            int dataMaestersId = dataMaesters.getId();
+            int greyMatterId = greyMatter.getId();
+            companyDao.deleteById(softwareMachineId);
+            companyDao.deleteById(dataMaestersId);
+            companyDao.deleteById(greyMatterId);
         }
     }
 

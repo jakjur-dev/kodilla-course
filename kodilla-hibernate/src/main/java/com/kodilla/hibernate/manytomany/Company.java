@@ -56,5 +56,4 @@ public class Company {
     private void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
-
 }
