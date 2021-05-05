@@ -95,13 +95,10 @@ class CompanyDaoTestSuite {
         List<Company> companiestStartingWithSof = companyDao.retrieveCompaniesStarting("Sof");
 
         //Then
-        try {
-
             assertEquals(1, employeesNamedSmith.size());
             assertEquals(1, companiestStartingWithSof.size());
 
-        } finally {
-
+        try {
             //CleanUp
             int softwareMachineId = softwareMachine.getId();
             int dataMaestersId = dataMaesters.getId();
@@ -109,6 +106,8 @@ class CompanyDaoTestSuite {
             companyDao.deleteById(softwareMachineId);
             companyDao.deleteById(dataMaestersId);
             companyDao.deleteById(greyMatterId);
+        } catch (Exception e) {
+            //do nothing
         }
     }
 
