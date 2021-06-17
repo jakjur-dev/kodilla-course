@@ -17,7 +17,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-aop'
     implementation 'org.testng:testng:7.1.0'
     implementation 'junit:junit:4.12'
-    implementation 'junit:junit:4.12'
+    implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
