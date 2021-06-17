@@ -27,12 +27,37 @@ public class CompanyFacade {
         this.employeeDao = employeeDao;
     }
 
-    public void findByFragments(String employeeFragment, String companyFragment) throws CompanyProcessingException {
+    public void findEmployeeByFragment(String employeeFragment) throws CompanyProcessingException {
 
         boolean wasError = false;
 
-            List<Company> companies = companyDao.retrieveCompaniesByNameFragment("%"+companyFragment+"%");
             List<Employee> employees = employeeDao.retrieveEmployeesByNameFragment("%"+employeeFragment+"%");
+
+        try {
+
+            LOGGER.info("Searching for employee with phrase:" + employeeFragment + "...");
+            for  (Employee employee: employees){
+                LOGGER.info("Found employee: " + employee.getFirstname() + " " + employee.getLastname());
+            }
+
+            if (employees.isEmpty()){
+                LOGGER.error(CompanyProcessingException.ERR_EMPLOYEE_ERROR);
+                wasError = true;
+                throw new CompanyProcessingException(CompanyProcessingException.ERR_EMPLOYEE_ERROR);
+            }
+
+        } finally {
+            if (wasError) {
+                LOGGER.info("Cancelling search...");
+            }
+        }
+    }
+
+    public void findCompanyByFragment(String companyFragment) throws CompanyProcessingException {
+
+        boolean wasError = false;
+
+        List<Company> companies = companyDao.retrieveCompaniesByNameFragment("%"+companyFragment+"%");
 
         try {
 
@@ -41,21 +66,10 @@ public class CompanyFacade {
                 LOGGER.info("Found company: " + company.getName());
             }
 
-            LOGGER.info("Searching for employee with phrase:" + employeeFragment + "...");
-            for  (Employee employee: employees){
-                LOGGER.info("Found employee: " + employee.getFirstname() + " " + employee.getLastname());
-            }
-
             if (companies.isEmpty()){
                 LOGGER.error(CompanyProcessingException.ERR_COMPANY_ERROR);
                 wasError = true;
                 throw new CompanyProcessingException(CompanyProcessingException.ERR_COMPANY_ERROR);
-            }
-
-            if (employees.isEmpty()){
-                LOGGER.error(CompanyProcessingException.ERR_EMPLOYEE_ERROR);
-                wasError = true;
-                throw new CompanyProcessingException(CompanyProcessingException.ERR_EMPLOYEE_ERROR);
             }
 
         } finally {
