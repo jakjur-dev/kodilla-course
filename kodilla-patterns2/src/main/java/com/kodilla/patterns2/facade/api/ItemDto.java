@@ -13,7 +13,6 @@ public final class ItemDto {
         return productId;
     }
 
-
     public double getQuantity() {
         return quantity;
     }
